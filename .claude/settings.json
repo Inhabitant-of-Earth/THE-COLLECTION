@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "permissions": {
+    "ask": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(git push origin main)",
+      "Bash(git push origin master)",
+      "Bash(git push --force*)",
+      "Bash(npm install -g *)",
+      "Bash(npm i -g *)",
+      "Bash(yarn global add *)",
+      "Bash(pnpm add -g *)",
+      "Bash(netsh *)",
+      "Bash(New-NetFirewallRule*)"
+    ],
+    "deny": [
+      "Edit(//etc/*)",
+      "Edit(//sys/*)",
+      "Read(.env)",
+      "Read(.env.*)"
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE COLLECTION | プレミアムアプリカタログ</title>
+<meta name="description" content="洗練された100のAndroidアプリを集めたプレミアムカタログ。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">✦</span>
+      <span class="brand-text">THE COLLECTION</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html" class="is-current">カタログ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">CURATED ANDROID APPLICATIONS</p>
+    <h1 class="hero-title">選び抜かれた、<br>100のアプリケーション</h1>
+    <p class="hero-lead">
+      上質な体験だけを厳選した、プレミアムアプリカタログ。<br>
+      日常に静かな贅沢を添える100のアプリケーションをご紹介します。
+    </p>
+  </div>
+</section>
+
+<main class="catalog">
+  <div class="catalog-controls">
+    <div class="search-box">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" placeholder="アプリ名やカテゴリで検索">
+    </div>
+    <div class="category-tabs" id="categoryTabs"></div>
+  </div>
+
+  <p class="result-line"><span id="resultCount">100</span> 件のアプリケーション</p>
+
+  <div class="app-grid" id="appGrid"></div>
+
+  <p class="no-result" id="noResult" style="display:none;">該当するアプリケーションが見つかりませんでした。</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark">✦</span>
+      <span class="brand-text">THE COLLECTION</span>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">カタログ</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Inhabitant of Earth. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="modal" id="appModal">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="閉じる">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="apps-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
