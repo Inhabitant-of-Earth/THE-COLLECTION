@@ -37,7 +37,7 @@
           <h3 class="app-name">${app.name}</h3>
           <p class="app-category">${app.category}</p>
           <div class="app-meta">
-            <span class="app-rating">${renderStars(app.rating)} <b>${app.rating}</b></span>
+            <!-- <span class="app-rating">${renderStars(app.rating)} <b>${app.rating}</b></span> -->
             <span class="app-price">${app.price}</span>
           </div>
         </div>
@@ -51,24 +51,25 @@
       <h2 class="modal-name">${app.name}</h2>
       <p class="modal-category">${app.category}</p>
       <div class="modal-stats">
-        <div class="modal-stat">
+        <!-- <div class="modal-stat">
           <span class="stat-value">${renderStars(app.rating)}<br><b>${app.rating}</b></span>
           <span class="stat-label">評価</span>
-        </div>
-        <div class="modal-stat">
+        </div> -->
+        <!-- <div class="modal-stat">
           <span class="stat-value">${app.downloads}</span>
           <span class="stat-label">ダウンロード数</span>
-        </div>
+        </div> -->
         <div class="modal-stat">
           <span class="stat-value">${app.price}</span>
           <span class="stat-label">価格</span>
         </div>
       </div>
-      <p class="modal-description">${app.description}</p>
-      <div class="modal-footer-info">
+      <h3 class="modal-description">このアプリについて</h3>
+      <!-- <div class="modal-footer-info">
         <span>バージョン ${app.version}</span>
         <span>${app.reviews.toLocaleString()} 件のレビュー</span>
-      </div>
+      </div> -->
+      <a class="modal-cta" href="#" target="_blank" rel="noopener">Google Playで入手</a>
     `;
   }
 
