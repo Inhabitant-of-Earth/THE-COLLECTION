@@ -203,7 +203,7 @@
     return {
       id: i + 1,
       name: 'Currently in Development',
-      category: '現在開発中',
+      category: 'カテゴリ',
       icon: cat.icon,
       rating: 5,
       reviews: reviews,
@@ -215,7 +215,7 @@
     };
   });
 
-  const CATEGORY_NAMES = ['すべて', '現在開発中'];
+  const CATEGORY_NAMES = ['すべて', 'カテゴリ'];
 
   global.CATALOG_APPS = APPS;
   global.CATALOG_CATEGORIES = CATEGORY_NAMES;

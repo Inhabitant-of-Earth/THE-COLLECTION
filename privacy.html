@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>プライバシーポリシー | THE COLLECTION</title>
 <link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -14,10 +21,15 @@
       <span class="brand-mark">✦</span>
       <span class="brand-text">THE COLLECTION</span>
     </a>
-    <nav class="site-nav">
-      <a href="index.html">カタログ</a>
-      <a href="privacy.html" class="is-current">プライバシーポリシー</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="index.html">カタログ</a>
+        <a href="privacy.html" class="is-current">プライバシーポリシー</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="表示テーマを切り替え">
+        <span class="theme-icon">☾</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -137,5 +149,11 @@
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="ページのトップへ戻る">
+  <span class="back-to-top-arrow" aria-hidden="true">↑</span>
+  <span class="back-to-top-label">ページのトップ</span>
+</button>
+
+<script src="site.js"></script>
 </body>
 </html>

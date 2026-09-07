@@ -13,9 +13,28 @@
   const modalBody = document.getElementById('modalBody');
   const modalClose = document.getElementById('modalClose');
   const noResult = document.getElementById('noResult');
+  const heroSparkle = document.getElementById('heroSparkle');
 
   let currentCategory = 'すべて';
   let currentQuery = '';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const revealObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            card.classList.add('is-visible');
+            revealObserver.unobserve(card);
+            card.addEventListener('transitionend', () => {
+              card.classList.remove('reveal-init', 'is-visible');
+              card.style.transitionDelay = '';
+            }, { once: true });
+          }
+        });
+      }, { threshold: 0.12 })
+    : null;
 
   function renderStars(rating) {
     const full = Math.floor(rating);
@@ -31,7 +50,7 @@
 
   function cardTemplate(app) {
     return `
-      <article class="app-card" data-id="${app.id}" tabindex="0" role="button" aria-label="${app.name} の詳細を見る">
+      <article class="app-card reveal-init" data-id="${app.id}" tabindex="0" role="button" aria-label="${app.name} の詳細を見る">
         <div class="app-icon" style="--hue:${app.hue}"></div>
         <div class="app-info">
           <h3 class="app-name">${app.name}</h3>
@@ -90,6 +109,13 @@
     resultCount.textContent = list.length;
     grid.innerHTML = list.map(cardTemplate).join('');
     noResult.style.display = list.length === 0 ? 'block' : 'none';
+
+    const cards = grid.querySelectorAll('.app-card');
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = prefersReducedMotion ? '0ms' : `${Math.min(i, 15) * 70}ms`;
+      if (revealObserver) revealObserver.observe(card);
+      else card.classList.add('is-visible');
+    });
   }
 
   function openModal(id) {
@@ -109,6 +135,25 @@
     categoryTabs.innerHTML = window.CATALOG_CATEGORIES.map(
       (cat) => `<button class="tab${cat === 'すべて' ? ' is-active' : ''}" data-category="${cat}">${cat}</button>`
     ).join('');
+  }
+
+  function initHeroSparkle() {
+    if (!heroSparkle || prefersReducedMotion) return;
+    const count = 34;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const spark = document.createElement('span');
+      spark.className = 'spark';
+      const size = (Math.random() * 2.2 + 2).toFixed(1);
+      spark.style.left = `${(Math.random() * 100).toFixed(1)}%`;
+      spark.style.top = `${(Math.random() * 100).toFixed(1)}%`;
+      spark.style.width = `${size}px`;
+      spark.style.height = `${size}px`;
+      spark.style.animationDuration = `${(Math.random() * 3 + 3).toFixed(2)}s`;
+      spark.style.animationDelay = `${(Math.random() * 5).toFixed(2)}s`;
+      frag.appendChild(spark);
+    }
+    heroSparkle.appendChild(frag);
   }
 
   // --- イベント ---
@@ -156,4 +201,5 @@
   // --- 初期化 ---
   buildCategoryTabs();
   render();
+  initHeroSparkle();
 })();

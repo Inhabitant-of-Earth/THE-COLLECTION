@@ -6,6 +6,13 @@
 <title>THE COLLECTION | プレミアムアプリカタログ</title>
 <meta name="description" content="洗練された100のAndroidアプリを集めたプレミアムカタログ。">
 <link rel="stylesheet" href="style.css">
+<script>
+  (function () {
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -15,14 +22,20 @@
       <span class="brand-mark">✦</span>
       <span class="brand-text">THE COLLECTION</span>
     </a>
-    <nav class="site-nav">
-      <a href="index.html" class="is-current">カタログ</a>
-      <a href="privacy.html">プライバシーポリシー</a>
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav">
+        <a href="index.html" class="is-current">カタログ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="表示テーマを切り替え">
+        <span class="theme-icon">☾</span>
+      </button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
+  <div class="hero-sparkle" id="heroSparkle" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow">CURATED ANDROID APPLICATIONS</p>
     <h1 class="hero-title">選び抜かれた、<br>100のアプリケーション</h1>
@@ -32,6 +45,7 @@
     </p>
   </div>
 </section>
+
 
 <main class="catalog">
   <div class="catalog-controls">
@@ -70,7 +84,13 @@
   </div>
 </div>
 
+<button class="back-to-top" id="backToTop" type="button" aria-label="ページのトップへ戻る">
+  <span class="back-to-top-arrow" aria-hidden="true">↑</span>
+  <span class="back-to-top-label">ページのトップ</span>
+</button>
+
 <script src="apps-data.js"></script>
 <script src="app.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
